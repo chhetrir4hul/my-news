@@ -1,7 +1,7 @@
 package com.rahul.mynews.network
 
-import androidx.viewbinding.BuildConfig
 import com.rahul.mynews.BASE_URL
+import com.rahul.mynews.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,7 @@ class NetworkModule {
     @Provides
     fun providesOkHttp(): OkHttpClient {
         return OkHttpClient().newBuilder()
-            .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
+            .addInterceptor(HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
             .addInterceptor(RequestInterceptor())
             .build()
     }
