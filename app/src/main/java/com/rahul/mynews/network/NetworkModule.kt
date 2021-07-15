@@ -27,6 +27,7 @@ class NetworkModule {
     fun providesOkHttp(): OkHttpClient {
         return OkHttpClient().newBuilder()
             .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
+            .addInterceptor(RequestInterceptor())
             .build()
     }
 
