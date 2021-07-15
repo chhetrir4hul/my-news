@@ -1,22 +1,16 @@
 package com.rahul.mynews.ui.news.list
 
-import android.util.Log
-import com.rahul.mynews.data.ApiResult
-import com.rahul.mynews.data.Resource
-import com.rahul.mynews.data.TopHeadlineResponse
-import com.rahul.mynews.network.NewsApi
-import com.rahul.mynews.ui.base.BaseViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.rahul.mynews.repository.news.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsListViewModel @Inject constructor(private val newsApi: NewsApi) : BaseViewModel() {
+class NewsListViewModel @Inject constructor(private val newsRepository: NewsRepository) :
+    ViewModel() {
     fun fetchHeadlines() {
-        executeApiRequest({ newsApi.getTopHeadlines("au") },
-            object : ApiResult<TopHeadlineResponse> {
-                override fun onResponse(apiResult: Resource<TopHeadlineResponse>) {
-                }
-            }
-        )
+        viewModelScope.launch { newsRepository.getTopHeadlines("au")}
     }
 }
