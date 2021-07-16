@@ -4,7 +4,10 @@
     <string name="txt_developed_by">Developed by: Rahul Chhetri</string>
 
     <string name="email_chooser_title">Send email using&#8230;</string>
+    <string name="share_chooser_title">Share news using&#8230;</string>
 
     <string name="error_open_webpage">Failed to open web page</string>
     <string name="error_composing_email">Failed to launch email</string>
+    <string name="txt_share">Share</string>
+    <string name="error_share_url">Failed to share news</string>
 </resources>

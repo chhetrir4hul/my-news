@@ -2,12 +2,14 @@ package com.rahul.mynews.ui.news.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rahul.mynews.R
 import com.rahul.mynews.data.Article
 import com.rahul.mynews.data.Resource
 import com.rahul.mynews.databinding.FragmentNewsListBinding
@@ -22,6 +24,11 @@ class NewsListFragment : Fragment() {
     private lateinit var mLinearLayoutManager: LinearLayoutManager
 
     private lateinit var mAdapter: NewsListAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,5 +69,10 @@ class NewsListFragment : Fragment() {
         mAdapter = NewsListAdapter(articleList)
 
         mBinding.rvNews.adapter = mAdapter
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        val menuItem = menu.findItem(R.id.action_share)
+        menuItem.isVisible = false
     }
 }

@@ -8,4 +8,10 @@
         android:title="@string/txt_about"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/txt_share"
+        app:showAsAction="always" />
+
 </menu>
