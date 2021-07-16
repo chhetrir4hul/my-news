@@ -2,7 +2,9 @@ package com.rahul.mynews.ui.news.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.rahul.mynews.R
 import com.rahul.mynews.data.Article
 import com.rahul.mynews.databinding.ItemNewsBinding
 
@@ -17,6 +19,10 @@ class NewsListAdapter(private val articleList: List<Article>) :
 
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {
         holder.bind(articleList[position])
+        holder.itemView.setOnClickListener {
+            val action = NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment()
+            it.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount() = articleList.size

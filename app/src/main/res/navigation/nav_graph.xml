@@ -9,7 +9,7 @@
         android:name="com.rahul.mynews.ui.news.list.NewsListFragment"
         android:label="@string/app_name">
         <action
-            android:id="@+id/action_newsListFragment_to_newsDetailFragment2"
+            android:id="@+id/action_newsListFragment_to_newsDetailFragment"
             app:destination="@id/newsDetailFragment" />
     </fragment>
 
