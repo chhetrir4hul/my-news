@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.rahul.mynews.BuildConfig
+import com.rahul.mynews.DEVELOPER_LINKEDIN
 import com.rahul.mynews.databinding.FragmentAboutMeBinding
+import com.rahul.mynews.util.EmailUtil
+import com.rahul.mynews.util.WebPageUtil
 
 class AboutMeFragment : Fragment() {
     lateinit var mBinding: FragmentAboutMeBinding
@@ -23,11 +26,22 @@ class AboutMeFragment : Fragment() {
 
         mBinding.tvAppVersion.text = BuildConfig.VERSION_NAME
 
+        mBinding.ivEmail.setOnClickListener { launchGmail() }
+        mBinding.ivLinkedin.setOnClickListener { openLinkedIn() }
+
         return mBinding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
+    }
+
+    private fun launchGmail() {
+        context?.let { EmailUtil.composeNewMessage(it) }
+    }
+
+    private fun openLinkedIn() {
+        context?.let { WebPageUtil.openWebPage(it, DEVELOPER_LINKEDIN) }
     }
 }

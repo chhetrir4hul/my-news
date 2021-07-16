@@ -2,4 +2,9 @@
     <string name="app_name">My News</string>
     <string name="txt_about">About Me</string>
     <string name="txt_developed_by">Developed by: Rahul Chhetri</string>
+
+    <string name="email_chooser_title">Send email using&#8230;</string>
+
+    <string name="error_open_webpage">Failed to open web page</string>
+    <string name="error_composing_email">Failed to launch email</string>
 </resources>
