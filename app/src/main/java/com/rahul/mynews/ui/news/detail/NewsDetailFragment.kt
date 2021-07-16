@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.rahul.mynews.R
 import com.rahul.mynews.data.Article
 import com.rahul.mynews.databinding.FragmentNewsDetailBinding
+import com.rahul.mynews.ui.MainActivity
 import com.rahul.mynews.util.DateTimeUtil
 import com.rahul.mynews.util.GlideImageLoader
 import com.rahul.mynews.util.ShareUtil
@@ -29,6 +30,9 @@ class NewsDetailFragment : Fragment() {
         mBinding = FragmentNewsDetailBinding.inflate(inflater, container, false)
 
         article = args.article
+
+        val activity = activity as MainActivity
+        activity.supportActionBar?.title = article?.title
 
         GlideImageLoader(mBinding.ivImage).load(article?.urlToImage)
         mBinding.tvTitle.text = article?.title ?: "-"
