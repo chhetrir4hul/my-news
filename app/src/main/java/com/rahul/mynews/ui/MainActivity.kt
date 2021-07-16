@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -41,7 +42,14 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_info -> {
-                navController.navigate(R.id.aboutMeFragment)
+                val options = NavOptions.Builder()
+                    .setEnterAnim(R.anim.fade_in)
+                    .setExitAnim(R.anim.fade_out)
+                    .setPopEnterAnim(R.anim.fade_in)
+                    .setPopExitAnim(R.anim.fade_out)
+                    .build()
+
+                navController.navigate(R.id.aboutMeFragment, null, options)
                 true
             }
             android.R.id.home -> {
