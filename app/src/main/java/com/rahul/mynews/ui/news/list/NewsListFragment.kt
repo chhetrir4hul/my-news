@@ -32,8 +32,6 @@ class NewsListFragment : Fragment() {
 
         mLinearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-        mViewModel.fetchHeadlines()
-
         mViewModel.topHeadlineResponse.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Error -> {

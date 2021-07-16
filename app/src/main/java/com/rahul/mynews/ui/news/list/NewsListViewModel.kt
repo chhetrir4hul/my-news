@@ -16,7 +16,11 @@ class NewsListViewModel @Inject constructor(private val newsRepository: NewsRepo
 
     var topHeadlineResponse = MutableLiveData<Resource<TopHeadlineResponse>>()
 
-    fun fetchHeadlines() {
+    init {
+        fetchHeadlines()
+    }
+
+    private fun fetchHeadlines() {
         topHeadlineResponse.postValue(Resource.Loading(null))
         viewModelScope.launch {
             topHeadlineResponse.postValue(newsRepository.getTopHeadlines("au"))
