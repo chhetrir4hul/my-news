@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.rahul.mynews.R
 import com.rahul.mynews.data.Article
 import com.rahul.mynews.databinding.ItemNewsBinding
 
@@ -20,7 +19,8 @@ class NewsListAdapter(private val articleList: List<Article>) :
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {
         holder.bind(articleList[position])
         holder.itemView.setOnClickListener {
-            val action = NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment()
+            val action =
+                NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment(articleList[position])
             it.findNavController().navigate(action)
         }
     }
