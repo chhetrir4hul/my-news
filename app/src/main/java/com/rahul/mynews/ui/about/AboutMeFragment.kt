@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.rahul.mynews.BuildConfig
 import com.rahul.mynews.databinding.FragmentAboutMeBinding
 
 class AboutMeFragment : Fragment() {
@@ -16,6 +17,8 @@ class AboutMeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         mBinding = FragmentAboutMeBinding.inflate(inflater, container, false)
+
+        mBinding.tvAppVersion.text = BuildConfig.VERSION_NAME
 
         return mBinding.root
     }
