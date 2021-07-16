@@ -1,5 +1,7 @@
 package com.rahul.mynews.data
 
+import java.io.Serializable
+
 data class Article(
     val source: Source,
     val author: String,
@@ -9,4 +11,4 @@ data class Article(
     val urlToImage: String,
     val publishedAt: String,
     val content: String,
-)
+) : Serializable
