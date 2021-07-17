@@ -9,6 +9,6 @@ class GlideImageLoader(private val imageView: ImageView) {
     }
 
     fun loadWeatherIcon(iconCode: String) {
-        load("https://openweathermap.org/img/w/$iconCode.png")
+        load("https://openweathermap.org/img/wn/$iconCode@2x.png")
     }
 }
