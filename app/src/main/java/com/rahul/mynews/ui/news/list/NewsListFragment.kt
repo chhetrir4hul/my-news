@@ -57,6 +57,22 @@ class NewsListFragment : Fragment() {
             }
         })
 
+        mViewModel.weatherResponse.observe(viewLifecycleOwner, {
+            when (it) {
+                is Resource.Error -> {
+                    Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    mBinding.progressBar.visibility = View.GONE
+                    mBinding.rvNews.visibility = View.VISIBLE
+                    mAdapter.setWeatherResponse(it.data)
+                    mAdapter.notifyItemChanged(0)
+                }
+            }
+        })
+
         return mBinding.root
     }
 
