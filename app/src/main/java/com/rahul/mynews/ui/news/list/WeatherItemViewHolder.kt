@@ -11,10 +11,10 @@ class WeatherItemViewHolder(private val itemWeatherBinding: ItemWeatherBinding) 
     fun bind(weather: WeatherResponse?) = with(itemWeatherBinding) {
 
         weather?.let {
-            GlideImageLoader(ivWeatherIcon).loadWeatherIcon(weather.weather[0].icon)
+            GlideImageLoader(ivWeatherIcon).loadWeatherIcon(it.weather[0].icon)
             tvTemperature.text =
-                itemView.context.getString(R.string.txt_temperature, weather.main.temp)
-            tvLocation.text = weather.name
+                itemView.context.getString(R.string.txt_temperature, it.main.temp)
+            tvLocation.text = it.name
         } ?: run { tvLocation.text = itemView.context.getString(R.string.txt_loading) }
     }
 }
