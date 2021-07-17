@@ -1,3 +1,3 @@
 package com.rahul.mynews.data
 
-data class ErrorResponse(val message: String, val code: Int)
+data class ErrorResponse(val message: String)
