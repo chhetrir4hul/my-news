@@ -15,6 +15,6 @@ class WeatherItemViewHolder(private val itemWeatherBinding: ItemWeatherBinding) 
             tvTemperature.text =
                 itemView.context.getString(R.string.txt_temperature, it.main.temp)
             tvLocation.text = it.name
-        } ?: run { tvLocation.text = itemView.context.getString(R.string.txt_loading) }
+        }
     }
 }
