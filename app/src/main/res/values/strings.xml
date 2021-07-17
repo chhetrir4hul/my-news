@@ -12,4 +12,6 @@
     <string name="error_share_url">Failed to share news</string>
 
     <string name="txt_loading">Loading&#8230;</string>
+
+    <string name="txt_temperature">%.2f °C</string>
 </resources>

@@ -12,7 +12,8 @@ class WeatherItemViewHolder(private val itemWeatherBinding: ItemWeatherBinding) 
 
         weather?.let {
             GlideImageLoader(ivWeatherIcon).loadWeatherIcon(weather.weather[0].icon)
-            tvTemperature.text = weather.main.temp.toString()
+            tvTemperature.text =
+                itemView.context.getString(R.string.txt_temperature, weather.main.temp)
             tvLocation.text = weather.name
         } ?: run { tvLocation.text = itemView.context.getString(R.string.txt_loading) }
     }
