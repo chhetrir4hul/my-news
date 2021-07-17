@@ -15,14 +15,17 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
+    @Singleton
     @Provides
     fun provideBaseUrl() = BASE_URL
 
+    @Singleton
     @Provides
     fun providesGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 
+    @Singleton
     @Provides
     fun providesOkHttp(): OkHttpClient {
         return OkHttpClient().newBuilder()
