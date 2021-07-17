@@ -10,4 +10,6 @@
     <string name="error_composing_email">Failed to launch email</string>
     <string name="txt_share">Share</string>
     <string name="error_share_url">Failed to share news</string>
+
+    <string name="txt_loading">Loading&#8230;</string>
 </resources>
