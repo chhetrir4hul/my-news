@@ -9,7 +9,7 @@ import com.rahul.mynews.data.WeatherResponse
 import com.rahul.mynews.databinding.ItemNewsBinding
 import com.rahul.mynews.databinding.ItemWeatherBinding
 
-class NewsListAdapter(private val articleList: List<Article>) :
+class NewsListAdapter :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -17,10 +17,18 @@ class NewsListAdapter(private val articleList: List<Article>) :
         const val TYPE_NEWS = 2
     }
 
+    private var articleList: List<Article> = emptyList()
+
     private var weatherResponse: WeatherResponse? = null
 
     fun setWeatherResponse(weatherResponse: WeatherResponse?) {
         this.weatherResponse = weatherResponse
+        notifyItemChanged(0)
+    }
+
+    fun setArticleList(articleList: List<Article>) {
+        this.articleList = articleList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

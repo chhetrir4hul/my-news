@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rahul.mynews.R
-import com.rahul.mynews.data.Article
 import com.rahul.mynews.data.Resource
 import com.rahul.mynews.databinding.FragmentNewsListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +38,8 @@ class NewsListFragment : Fragment() {
 
         mLinearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
+        setupRecycler()
+
         mViewModel.topHeadlineResponse.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Error -> {
@@ -52,7 +53,9 @@ class NewsListFragment : Fragment() {
                 is Resource.Success -> {
                     mBinding.progressBar.visibility = View.GONE
                     mBinding.rvNews.visibility = View.VISIBLE
-                    setupRecycler(it.data?.articles)
+                    it.data?.articles?.let { it1 ->
+                        mAdapter.setArticleList(it1)
+                    }
                 }
             }
         })
@@ -68,7 +71,6 @@ class NewsListFragment : Fragment() {
                     mBinding.progressBar.visibility = View.GONE
                     mBinding.rvNews.visibility = View.VISIBLE
                     mAdapter.setWeatherResponse(it.data)
-                    mAdapter.notifyItemChanged(0)
                 }
             }
         })
@@ -76,14 +78,9 @@ class NewsListFragment : Fragment() {
         return mBinding.root
     }
 
-    private fun setupRecycler(articleList: List<Article>?) {
-        if (articleList == null)
-            return
-
+    private fun setupRecycler() {
         mBinding.rvNews.layoutManager = mLinearLayoutManager
-
-        mAdapter = NewsListAdapter(articleList)
-
+        mAdapter = NewsListAdapter()
         mBinding.rvNews.adapter = mAdapter
     }
 
