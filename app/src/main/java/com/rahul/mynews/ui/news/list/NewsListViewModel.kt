@@ -26,7 +26,7 @@ class NewsListViewModel @Inject constructor(
         fetchHeadlines()
     }
 
-    private fun fetchHeadlines() {
+    fun fetchHeadlines() {
         topHeadlineResponse.postValue(Resource.Loading(null))
         viewModelScope.launch {
             topHeadlineResponse.postValue(newsRepository.getTopHeadlines("au"))
@@ -34,7 +34,7 @@ class NewsListViewModel @Inject constructor(
         }
     }
 
-    private fun fetchWeather() {
+    fun fetchWeather() {
         viewModelScope.launch {
             weatherResponse.postValue(weatherRepository.getWeatherByCity("sydney"))
         }
