@@ -9,7 +9,7 @@ object FileReader {
         return fileInputStream?.bufferedReader()?.readText() ?: ""
     }
 
-    fun <T> parseTestResourceFile(fileName: String): T {
+    inline fun <reified T> parseTestResourceFile(fileName: String): T {
         val gson = Gson()
         val type = object : TypeToken<T>() {}.type
         return gson.fromJson(readTestResourcesFile(fileName), type)
