@@ -2,6 +2,10 @@ package com.rahul.mynews
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
@@ -29,4 +33,12 @@ fun <T> LiveData<T>.getOrAwaitValue(
 
     @Suppress("UNCHECKED_CAST")
     return data as T
+}
+
+inline fun <reified T> LiveData<T>.captureValues(): List<T?> {
+    val mockObserver = mockk<Observer<T>>()
+    val list = mutableListOf<T?>()
+    every { mockObserver.onChanged(captureNullable(list)) } just runs
+    this.observeForever(mockObserver)
+    return list
 }
